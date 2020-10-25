@@ -1,0 +1,17 @@
+数据说明文档
+数据包含了酒店售前的部分会话数据，重要字段已进行脱敏处理。参赛选手需要从客服回复(非机器人回复)中筛选有用的信息，生成可靠准确的问答对。
+其中会话消息列表列为每通会话的消息列表，包含用户(user)、客服(imkf/imebk)、机器人(imbot)的聊天消息(已通过消息创建时间排序)。
+售前场景用户咨询酒店信息的问题较多，且客服多条回复才能回答一个问题。
+以下为数据分析和挖掘的示例说明
+
+示例1：
+数据：m41057***63	10000004***3020	酒店售前	[{'msgtype': '7', 'fromuid': '_imbot_***', 'message': '您好,请问有什么可以帮您?', 'message_create_time': '2020-10-12 16:36:13'}, {'msgtype': '7', 'fromuid': 'user', 'message': '你好', 'message_create_time': '2020-10-12 16:36:13'}, {'msgtype': '7', 'fromuid': 'user', 'message': '我们是今晚23点40分到酒店入住', 'message_create_time': '2020-10-12 16:36:29'}, {'msgtype': '0', 'fromuid': 'user', 'message': '你们有接机吗', 'message_create_time': '2020-10-12 16:36:37'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '您好！我们每个订单都是提供免费的一接一送的 ', 'message_create_time': '2020-10-12 16:38:55'}, {'msgtype': '0', 'fromuid': 'user', 'message': '好的，那我们是今晚23点40分到长水机场', 'message_create_time': '2020-10-12 16:39:33'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '您下飞机第一时间打电话到前台，我们会派接机师傅过去接您！ ', 'message_create_time': '2020-10-12 16:40:19'}, {'msgtype': '0', 'fromuid': 'user', 'message': '好的', 'message_create_time': '2020-10-12 16:40:30'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '不客气 ，期待您的光临 ', 'message_create_time': '2020-10-12 16:40:56'}]
+针对该条数据可以生成的问答对如下：
+问：你们有接机吗||我们是今晚23点40分到酒店入住
+答：您好！我们每个订单都是提供免费的一接一送的 ||您下飞机第一时间打电话到前台，我们会派接机师傅过去接您！ 
+
+示例2：
+数据：_cft0100000***872718	80000004***3388	酒店售前	[{'msgtype': '7', 'fromuid': 'user', 'message': '酒店有停车场吗', 'message_create_time': '2020-10-10 22:43:09'}, {'msgtype': '7', 'fromuid': '_imbot_***', 'message': '您好，酒店没有停车场。', 'message_create_time': '2020-10-10 22:43:09'}, {'msgtype': '7', 'fromuid': 'user', 'message': '附近有停车吗', 'message_create_time': '2020-10-10 22:43:18'}, {'msgtype': '7', 'fromuid': '_imbot_***', 'message': '您好，酒店没有停车场。', 'message_create_time': '2020-10-10 22:43:19'}, {'msgtype': '7', 'fromuid': 'user', 'message': '附近有位子停车吗', 'message_create_time': '2020-10-10 22:43:35'}, {'msgtype': '7', 'fromuid': '_imbot_***', 'message': '客服不在线，为您提供其他选择，请点击下方', 'message_create_time': '2020-10-10 22:43:41'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '你好 ', 'message_create_time': '2020-10-10 22:44:29'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '酒店楼下有停车场  ', 'message_create_time': '2020-10-10 22:44:53'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '是小区物业管理的 ', 'message_create_time': '2020-10-10 22:44:58'}, {'msgtype': '0', 'fromuid': 'user', 'message': '收费吗', 'message_create_time': '2020-10-10 22:46:25'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '是的 ', 'message_create_time': '2020-10-10 22:46:59'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '一个小时2块钱  一天封顶20 ', 'message_create_time': '2020-10-10 22:47:12'}, {'msgtype': '0', 'fromuid': 'user', 'message': 'OK', 'message_create_time': '2020-10-10 22:47:46'}, {'msgtype': '0', 'fromuid': 'user', 'message': '入住两天的话有停车卷吗', 'message_create_time': '2020-10-10 22:48:37'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '不好意思哦 ', 'message_create_time': '2020-10-10 22:49:08'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '我们酒店是没有停车券的 ', 'message_create_time': '2020-10-10 22:49:17'}, {'msgtype': '0', 'fromuid': 'user', 'message': '没事', 'message_create_time': '2020-10-10 22:50:16'}, {'msgtype': '0', 'fromuid': '_imkf_****', 'message': '好滴 ', 'message_create_time': '2020-10-10 22:55:04'}]
+针对该条数据可以生成的问答对如下：
+问：附近有位子停车吗
+答：酒店楼下有停车场  ||是小区物业管理的 
